@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/login_message_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Enter your registered mobile number with your bank account  "
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/login_message_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="We use your registered mobile number with bank to read bank SMS to know your account balance. The balance in your account wins your Alﬁn coins.  "
+            android:textColor="#838383"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/phone_number_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="66dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_bg"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/prompt_number"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="8dp"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/refferal_code_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="66dp"
+            android:background="@drawable/edit_text_bg"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/prompt_referral_code"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:paddingLeft="8dp"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/app_button_bg"
+            android:enabled="false"
+            android:padding="8dp"
+            android:text="@string/next_str"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="We do not have access to your bank account."
+            android:textColor="#838383"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="We do not share the transacation data with your agents, any merchant or third party."
+            android:textColor="#838383"
+            android:textSize="14sp" />
+
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/otp_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Enter OTP"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="We use your registered mobile number with bank to read bank SMS to know your account balance. The balance in your account wins your Alﬁn coins.  "
+            android:textColor="#838383"
+            android:textSize="12sp"
+            tools:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/otp_insert_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtOTP1"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtOTP2"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtOTP3"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtOTP4"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtOTP5"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtOTP6"
+                android:layout_width="@dimen/otp_box_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edit_text_bg"
+                android:fontFamily=""
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="1"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="Resend OTP"
+            android:textColor="#0091ff" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/app_button_bg"
+            android:enabled="false"
+            android:padding="8dp"
+            android:text="@string/submit_str"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="We do not have access to your bank account."
+            android:textColor="#838383"
+            android:textSize="12sp"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="We do not share the transacation data with your agents, any merchant or third party."
+            android:textColor="#838383"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
+
+    </LinearLayout>
+</RelativeLayout>

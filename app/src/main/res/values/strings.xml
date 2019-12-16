@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">AlfinApp</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_contest">Contest</string>
+    <string name="title_passbook">Passbook</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_notification">Notification</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="next_str">Next</string>
+    <string name="submit_str">Submit</string>
+    <string name="join_alfin_msg">Join Alfin</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_number">Phone</string>
+    <string name="prompt_referral_code">Refferal Code</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Refferal Code  must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string-array name="appintro_messages_array">
+        <item>Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere	</item>
+        <item>Use Alfin Coins to win exciting prizes for FREE every month.</item>
+        <item>Check Your Savings Account Transactions without any Banking Password or ATM PIN. No need to Visit Bank Branches now.</item>
+    </string-array>
+
+
 </resources>

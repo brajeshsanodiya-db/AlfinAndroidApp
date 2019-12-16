@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AlfinApp</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+
+    <string name="title_home">होम</string>
+    <string name="title_contest">कांटेस्ट</string>
+    <string name="title_passbook">पासबुक</string>
+    <string name="title_profile">प्रोफाइल</string>
+    <string name="title_notification">नोटिफिकेशन</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="next_str">अगला</string>
+    <string name="submit_str">सबमिट</string>
+
+    <string name="join_alfin_msg">Alfin में शामिल हों</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_number">ईमेल</string>
+    <string name="prompt_referral_code">पासवर्ड</string>
+    <string name="action_sign_in">साइन इन और रजिस्टर</string>
+    <string name="action_sign_in_short">साइन इन</string>
+    <string name="welcome">"वेलकम !"</string>
+    <string name="invalid_username">मान्य उपयोगकर्ता नाम नहीं</string>
+    <string name="invalid_password">पासवर्ड >5 अक्षर का होना चाहिए</string>
+    <string name="login_failed">"लॉगिन फेल्ड"</string>
+
+    <string-array name="appintro_messages_array">
+        <item>अपने बचत खाते के शेष पर अल्फिन सिक्के के साथ पुरस्कार प्राप्त करें और कहीं भी पैसे बचाएं।</item>
+        <item>हर महीने मुफ्त में रोमांचक पुरस्कार जीतने के लिए अल्फिन सिक्के का उपयोग करें।</item>
+        <item>अब बैंक शाखा में जाने की आवश्यकता नहीं है। किसी भी बैंकिंग पासवर्ड या एटीएम पिन के बिना अपने बचत खाते के लेन-देन की जाँच करें। </item>
+    </string-array>
+
+
+
+</resources>
