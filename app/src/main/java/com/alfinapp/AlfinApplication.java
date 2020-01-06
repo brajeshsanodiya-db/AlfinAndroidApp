@@ -21,6 +21,6 @@ public class AlfinApplication extends Application {
     }
 
     public void setApplicationFont() {
-        FontsUtils.setDefaultFont(this, "MONOSPACE", "fonts/Lato-Medium.ttf");
+        FontsUtils.setDefaultFont(this, "MONOSPACE", "fonts/Lato-Regular.ttf");
     }
 }

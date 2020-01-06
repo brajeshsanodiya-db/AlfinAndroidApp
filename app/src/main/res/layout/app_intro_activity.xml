@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@drawable/ic_app_bg">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.viewpager.widget.ViewPager
+        <com.alfinapp.ui.views.NonSwipeableViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/indicator"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="@dimen/onboard_margin"
-            android:layout_marginTop="@dimen/onboard_margin_top"
-            android:layout_marginEnd="@dimen/onboard_margin"
-            android:layout_marginBottom="@dimen/onboard_margin"
-            android:background="@drawable/onboarding_message_bg"
+            android:layout_height="match_parent"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="90.4dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="163.6dp"
+            android:background="@drawable/onboard_message_message"
             tools:context=".ui.appintro.AppIntroActivity" />
 
         <com.shuhart.bubblepagerindicator.BubblePageIndicator
@@ -30,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/btn_next"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="43dp"
             app:bpi_fillColor="@color/black"
             app:bpi_marginBetweenCircles="3dp"
             app:bpi_onSurfaceCount="@integer/default_bubble_indicator_on_surface_count"
@@ -37,25 +37,29 @@
             app:bpi_radius="4dp"
             app:bpi_risingCount="@integer/default_bubble_indicator_rising_count" />
 
-        <TextView
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/onboard_margin"
+            android:layout_marginLeft="67.5dp"
+            android:layout_marginRight="67.5dp"
+            android:layout_marginBottom="42dp"
             android:background="@drawable/app_button_bg"
             android:gravity="center"
             android:padding="12dp"
             android:text="@string/next_str"
             android:textColor="#FFFFFF" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/onboard_margin"
-            android:src="@drawable/coins" />
     </RelativeLayout>
 
 
+    <ImageView
+        android:layout_width="266dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="@dimen/onboard_margin"
+        android:layout_marginEnd="68dp"
+        android:src="@drawable/coins"
+        android:contentDescription="@string/welcome" />
 </RelativeLayout>

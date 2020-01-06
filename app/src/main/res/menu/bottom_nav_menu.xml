@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_btm_home"
-        android:title="@string/title_home" />
+        android:icon="@drawable/home"
+        android:title="@string/title_home"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_contests"
-        android:icon="@drawable/ic_btm_contests"
-        android:title="@string/title_contest" />
+        android:icon="@drawable/gift"
+        android:title="@string/title_contest"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_passbook"
-        android:icon="@drawable/ic_btm_passbook"
-        android:title="@string/title_passbook" />
+        android:icon="@drawable/book"
+        android:title="@string/title_passbook"
+        app:showAsAction="always" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_btm_profile"
-        android:title="@string/title_profile" />
+        android:icon="@drawable/user"
+        android:title="@string/title_profile"
+        app:showAsAction="always" />
 
 </menu>

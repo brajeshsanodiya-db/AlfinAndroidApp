@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_app_bg">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="76dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/welcome_message_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp">
+
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/welcome_group" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:paddingTop="6dp"
+                    android:src="@drawable/single_coin" />
+
+                <com.alfinapp.ui.views.fontTextView.LatoBlackTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="1000"
+                    android:textColor="#dca202"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <com.alfinapp.ui.views.fontTextView.LatoItalicTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginEnd="41dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_horizontal"
+                android:text="@string/we_have_gifted_you"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center_horizontal"
+            android:text="@string/use_your_alfin_coins_to_win"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoBoldItalicTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="42dp"
+            android:gravity="center_horizontal"
+            android:text="@string/keep_higher_account_balance"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@string/refer_and_earn_alfin_coins"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="67.5dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="67.5dp"
+            android:layout_marginBottom="42dp"
+            android:background="@drawable/app_button_bg"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/lets_get_started"
+            android:textColor="#FFFFFF"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/coins_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/welcome"
+        android:src="@drawable/coins" />
+
+    <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+        android:id="@+id/welcome_to_alfin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/coins_image_view"
+        android:layout_centerHorizontal="true"
+        android:text="@string/welcome_to_alfin"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

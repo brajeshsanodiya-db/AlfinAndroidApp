@@ -7,10 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.StringRes;
@@ -19,13 +18,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.alfinapp.R;
 import com.alfinapp.ui.home.HomeActivity;
+import com.alfinapp.ui.views.fontTextView.LatoHeavyTextView;
+import com.alfinapp.ui.welcome.WelcomeActivity;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LoginViewModel loginViewModel;
-    private LinearLayout login_layout;
-    private LinearLayout otp_layout;
+    private RelativeLayout login_layout, otp_layout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .get(LoginViewModel.class);
 
         final EditText phoneNumberEditText = findViewById(R.id.username);
-        final EditText refferalEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final Button submitButton = findViewById(R.id.submit);
+        final EditText refferalEditText = findViewById(R.id.referral_code_ev);
+        final LatoHeavyTextView loginButton = findViewById(R.id.login);
+        final LatoHeavyTextView submitButton = findViewById(R.id.submit);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         login_layout = findViewById(R.id.login_layout);
         otp_layout = findViewById(R.id.otp_layout);
         loginButton.setEnabled(true);
+        submitButton.setEnabled(true);
 
-        loginButton.setOnClickListener(this::onClick);
-        submitButton.setOnClickListener(this::onClick);
+        loginButton.setOnClickListener(this);
+        submitButton.setOnClickListener(this);
 
         loginViewModel.getLoginFormState().observe(this, loginFormState -> {
             if (loginFormState == null) {
@@ -129,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                    refferalEditText.getText().toString());
                 break;
             case R.id.submit:
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
                 finish();
                 break;
         }

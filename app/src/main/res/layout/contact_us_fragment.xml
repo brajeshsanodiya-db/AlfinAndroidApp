@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.contactUs.ContactUsFragment">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <RelativeLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+            android:id="@+id/login_message_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="61dp"
+            android:text="We would love to hear from you"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+            android:id="@+id/login_message_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_message_1"
+            android:layout_marginStart="41.5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="41.5dp"
+            android:gravity="center_horizontal"
+            android:text="Whether you have a question about features, Contests, need a demo, or anything else, our team is ready to answer all your questions"
+            android:textColor="#838383"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/email_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_message_2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+                android:id="@+id/email_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="#bdbdbd"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_title_text_view"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/edit_text_bg"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp">
+
+
+                <EditText
+                    android:id="@+id/email_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="8dp"
+                    android:selectAllOnFocus="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="LabelFor,RtlSymmetry" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/message_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20.6dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+                android:id="@+id/message_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_us_message"
+                android:textColor="#bdbdbd"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/message_title"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/edit_text_bg"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp">
+
+
+                <EditText
+                    android:id="@+id/message_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="textImeMultiLine"
+                    android:paddingStart="8dp"
+                    android:selectAllOnFocus="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText,LabelFor,RtlSymmetry" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message_parent"
+            android:layout_marginStart="67.5dp"
+            android:layout_marginTop="67.6dp"
+            android:layout_marginEnd="67.5dp"
+            android:background="@drawable/app_button_bg">
+
+            <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:enabled="false"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/submit_str"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

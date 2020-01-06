@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/otp_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible">
+
+    <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+        android:id="@+id/otp_message_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:gravity="center_horizontal"
+        android:text="@string/enter_otp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:textColor="#838383"
+        android:textSize="12sp"
+        tools:visibility="gone" />
+
+    <com.mukesh.OtpView
+        android:id="@+id/otpView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/otp_message_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102.6dp"
+        android:layout_marginTop="88.5dp"
+        android:layout_marginEnd="102.6dp"
+        android:focusable="true"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="123456"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:itemCount="6"
+        app:itemWidth="20dp"
+        app:lineColor="#f3b815"
+        app:viewType="line"
+        tools:ignore="HardcodedText" />
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:id="@+id/resend_otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/otpView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="15.5dp"
+        android:text="@string/resend_otp"
+        android:textColor="#0091ff" />
+
+    <LinearLayout
+        android:id="@+id/submit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resend_otp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/app_button_bg">
+
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:enabled="false"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/submit_str"
+            android:textAllCaps="true"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:textColor="#838383"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="#838383"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:padding="12dp">
+
+    <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+        android:id="@+id/index_text_view"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/about_circle"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+        android:id="@+id/about_us_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/index_text_view"
+        android:lineSpacingExtra="4sp"
+        android:text="Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere"
+        android:textColor="#000"
+        android:textSize="14sp" />
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:id="@+id/about_us_subtitle_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_us_title_textview"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/index_text_view"
+
+        android:text="Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere"
+        android:textColor="#6f6f6f"
+        android:textSize="12sp" />
+
+</RelativeLayout>

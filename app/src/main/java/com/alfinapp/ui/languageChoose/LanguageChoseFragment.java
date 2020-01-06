@@ -36,8 +36,22 @@ public class LanguageChoseFragment extends Fragment implements View.OnClickListe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.language_chose_fragment, container, false);
-        rootView.findViewById(R.id.select_hindi).setOnClickListener(this::onClick);
-        rootView.findViewById(R.id.select_english).setOnClickListener(this::onClick);
+        TextView select_hindiTextView = rootView.findViewById(R.id.select_hindi);
+        TextView select_englishTextView = rootView.findViewById(R.id.select_english);
+
+        select_hindiTextView.setOnClickListener(this::onClick);
+        select_englishTextView.setOnClickListener(this::onClick);
+
+        if (AlfinPreferences.getInstance(getActivity()).getStringValue(AlfinConstants.AppPrefKeys.APP_LANGUAGE_DONE, "").equalsIgnoreCase(AlfinConstants.LocaleValue.HINDI)) {
+            select_hindiTextView.setBackgroundResource(R.drawable.onboarding_language_select_bg);
+            select_englishTextView.setBackgroundResource(R.drawable.onboarding_language_bg);
+        } else if (AlfinPreferences.getInstance(getActivity()).getStringValue(AlfinConstants.AppPrefKeys.APP_LANGUAGE_DONE, "").equalsIgnoreCase(AlfinConstants.LocaleValue.ENGLISH)) {
+            select_hindiTextView.setBackgroundResource(R.drawable.onboarding_language_bg);
+            select_englishTextView.setBackgroundResource(R.drawable.onboarding_language_select_bg);
+        } else {
+            select_hindiTextView.setBackgroundResource(R.drawable.onboarding_language_bg);
+            select_englishTextView.setBackgroundResource(R.drawable.onboarding_language_bg);
+        }
         return rootView;
     }
 
@@ -58,7 +72,6 @@ public class LanguageChoseFragment extends Fragment implements View.OnClickListe
                 resetActivityAgain();
                 break;
             case R.id.select_english:
-            default:
                 AlfinPreferences.getInstance(getActivity()).setStringValue(AlfinConstants.AppPrefKeys.APP_LANGUAGE_DONE, AlfinConstants.LocaleValue.ENGLISH);
                 ToolsUtils.getToolsUtils().setLocale(getContext(), AlfinConstants.LocaleValue.ENGLISH);
                 resetActivityAgain();
@@ -70,6 +83,5 @@ public class LanguageChoseFragment extends Fragment implements View.OnClickListe
 
     private void resetActivityAgain() {
         getActivity().recreate();
-
     }
 }

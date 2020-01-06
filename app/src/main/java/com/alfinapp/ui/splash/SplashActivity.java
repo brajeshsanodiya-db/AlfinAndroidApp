@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.alfinapp.R;
 import com.alfinapp.data.local.AlfinPreferences;
 import com.alfinapp.ui.appintro.AppIntroActivity;
 import com.alfinapp.ui.home.HomeActivity;
 import com.alfinapp.utils.AlfinConstants;
+import com.alfinapp.utils.AppSignatureHelper;
 
 public class SplashActivity extends AppCompatActivity {
     AlfinPreferences alfinPreferences;
@@ -22,7 +24,9 @@ public class SplashActivity extends AppCompatActivity {
 
 
         alfinPreferences = AlfinPreferences.getInstance(SplashActivity.this);
-        new Handler().postDelayed(this::init, 500);
+
+        // Log.d("Hash=> ", "== " + new AppSignatureHelper(SplashActivity.this).getAppSignatures().toString());//TODO:: app signature for otp
+        new Handler().postDelayed(this::init, 1000);
     }
 
     private void init() {
