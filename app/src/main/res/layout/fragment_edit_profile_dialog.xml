@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/profile_edit_bg"
+    android:orientation="vertical">
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="36dp"
+        android:text="Edit Profile"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="22dp"
+        android:text="Name"
+        android:textColor="#aaaaaa"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/editprofile_text_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp">
+
+
+        <EditText
+            android:id="@+id/referral_code_ev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="8dp"
+            android:selectAllOnFocus="true"
+            android:text="Lalit"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,LabelFor,RtlSymmetry" />
+    </LinearLayout>
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="27dp"
+        android:text="Phone Number"
+        android:textColor="#aaaaaa"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/editprofile_text_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp">
+
+
+        <EditText
+            android:id="@+id/phone_number_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:paddingStart="8dp"
+            android:selectAllOnFocus="true"
+            android:text="999XXXXXXX"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,LabelFor,RtlSymmetry" />
+    </LinearLayout>
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="27dp"
+        android:text="Email Address"
+        android:textColor="#aaaaaa"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/editprofile_text_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp">
+
+
+        <EditText
+            android:id="@+id/email_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="8dp"
+            android:selectAllOnFocus="true"
+            android:text="pankaj.masa@gmail.com"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,LabelFor,RtlSymmetry" />
+    </LinearLayout>
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="27dp"
+        android:text="Address"
+        android:textColor="#aaaaaa"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/editprofile_text_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp">
+
+
+        <EditText
+            android:id="@+id/address_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="8dp"
+            android:selectAllOnFocus="true"
+            android:text="Outer Ring Road"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,LabelFor,RtlSymmetry" />
+    </LinearLayout>
+
+    <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/app_button_bg"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="UPDATE"
+        android:textColor="#FFFFFF"
+        tools:visibility="visible" />
+
+</LinearLayout>

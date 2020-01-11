@@ -18,7 +18,7 @@ import com.alfinapp.R;
 
 import java.util.Objects;
 
-public class ProfileFragment extends Fragment implements View.OnClickListener {
+public class ProfileFragment extends Fragment implements View.OnClickListener, EditProfileDialogFragment.Listener {
 
     private ProfileViewModel mViewModel;
 
@@ -38,9 +38,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         ImageView backButtonImageView = rootView.findViewById(R.id.back_button);
         backButtonImageView.setOnClickListener(this);
         TextView titleTextView = rootView.findViewById(R.id.text_view_title);
-        TextView editTextView = rootView.findViewById(R.id.edit_text_view);
-        editTextView.setVisibility(View.VISIBLE);
-        editTextView.setOnClickListener(this);
+        rootView.findViewById(R.id.edit_profile).setOnClickListener(this);
         titleTextView.setText(Objects.requireNonNull(getContext()).getString(R.string.title_profile));
     }
 
@@ -53,6 +51,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.edit_profile:
+                showBottomSheet();
+                break;
+
+        }
+    }
+
+    private void showBottomSheet() {
+        EditProfileDialogFragment itemListDialogFragment =  EditProfileDialogFragment.newInstance();
+        itemListDialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    @Override
+    public void onItemClicked(int position) {
 
     }
 }

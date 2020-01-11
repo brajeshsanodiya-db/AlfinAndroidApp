@@ -71,21 +71,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.option_notification) {
-            navController.navigate(R.id.option_notification);
-        }
-        return true;
-    }
-
     private void startBusinessLogic() {
         startSmsCalculation();
     }

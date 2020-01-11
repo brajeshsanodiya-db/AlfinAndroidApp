@@ -30,18 +30,6 @@
                 android:text="Title Here"
                 android:textColor="@color/black" />
 
-            <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
-                android:id="@+id/edit_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:text="Edit"
-                android:textColor="#23a1ff"
-                android:textSize="12sp"
-                android:visibility="gone"
-                tools:visibility="visible" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 </com.google.android.material.appbar.AppBarLayout>

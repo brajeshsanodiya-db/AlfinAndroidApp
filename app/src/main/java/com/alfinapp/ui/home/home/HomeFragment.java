@@ -1,79 +1,134 @@
 package com.alfinapp.ui.home.home;
 
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alfinapp.R;
+import com.alfinapp.ui.views.WrapContentHeightViewPager;
 import com.shuhart.bubblepagerindicator.BubblePageIndicator;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private ViewPager viewPager;
+    private WrapContentHeightViewPager viewPager;
+    private float RATIO_SCALE = 1.90f;
+    private View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        setItemPager(root);
-
-
+//        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setItemPager(root);
+
+    }
+
     private void setItemPager(View root) {
-        if (viewPager == null) {
 
-            // Initializing view pager
-            viewPager = root.findViewById(R.id.item_pager);
+        // Initializing view pager
+        viewPager = root.findViewById(R.id.item_pager);
 
-            // Disable clip to padding
-            viewPager.setClipToPadding(false);
-            // set padding manually, the more you set the padding the more you see of prev & next page
-            viewPager.setPadding(120, 0, 120, 0);
-            // sets a margin b/w individual pages to ensure that there is a gap b/w them
-            viewPager.setPageMargin(10);
+        viewPager.setClipToPadding(false);
+        viewPager.setPageMargin(24);
+        viewPager.setPadding(160, 0, 160, 0);
+        viewPager.setOffscreenPageLimit(3);
 
-        }
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        viewPager.setAdapter(new PagerAdapter() {
-            @NonNull
             @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.pageritem_home, container, false);
-                container.addView(layout);
-                return layout;
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                ViewGroup sampleFragment = ((HomePagerAdapter) Objects.requireNonNull(viewPager.getAdapter())).getRegisteredFragment(position);
+                float scale = 1 - (positionOffset * RATIO_SCALE);
+                sampleFragment.setScaleY(scale);
+                sampleFragment.invalidate();
+                if (position + 1 < viewPager.getAdapter().getCount()) {
+                    sampleFragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(position + 1);
+                    scale = positionOffset * RATIO_SCALE + (1 - RATIO_SCALE);
+                    sampleFragment.setScaleY(scale);
+                    sampleFragment.invalidate();
+                }
             }
 
             @Override
-            public int getCount() {
-                return 5;
+            public void onPageSelected(int position) {
             }
 
             @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view == object;
-            }
-            @Override
-            public void destroyItem(ViewGroup collection, int position, Object view) {
-                collection.removeView((View) view);
+            public void onPageScrollStateChanged(int state) {
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    ViewGroup fragment = ((HomePagerAdapter) Objects.requireNonNull(viewPager.getAdapter())).getRegisteredFragment(viewPager.getCurrentItem());
+                    fragment.setScaleY(1);
+                    fragment.invalidate();
+                    if (viewPager.getCurrentItem() > 0) {
+                        fragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(viewPager.getCurrentItem() - 1);
+                        fragment.setScaleY(1 - RATIO_SCALE);
+                        fragment.invalidate();
+                    }
+
+                    if (viewPager.getCurrentItem() + 1 < viewPager.getAdapter().getCount()) {
+                        fragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(viewPager.getCurrentItem() + 1);
+                        fragment.setScaleY(1 - RATIO_SCALE);
+                    }
+                }
+
             }
         });
+
+        viewPager.setAdapter(new HomePagerAdapter());
         BubblePageIndicator indicator = root.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
+    }
+
+    class HomePagerAdapter extends PagerAdapter {
+        SparseArray<ViewGroup> registeredFragments = new SparseArray<>();
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.pageritem_home, container, false);
+            registeredFragments.put(position, layout);
+            container.addView(layout);
+            return layout;
+        }
+
+        @Override
+        public int getCount() {
+            return 5;
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return view == object;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup collection, int position, @NotNull Object view) {
+            registeredFragments.remove(position);
+
+            collection.removeView((View) view);
+        }
+
+
+        ViewGroup getRegisteredFragment(int position) {
+            return registeredFragments.get(position);
+        }
     }
 }

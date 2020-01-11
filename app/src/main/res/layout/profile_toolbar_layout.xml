@@ -14,37 +14,34 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/app_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/back_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/content_desc"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:padding="12dp"
+                android:src="@drawable/ic_back_black" />
 
-            <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+            <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+                android:id="@+id/text_view_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@+id/app_icon"
-                android:letterSpacing="0.03"
-                android:text="THE MOST REWARDING\nSAVINGS APP "
-                android:textColor="#000000"
-                android:textSize="8sp" />
+                android:layout_centerInParent="true"
+                android:text="Title Here"
+                android:textColor="@color/black" />
 
-
-            <ImageView
-                android:id="@+id/toolbar_notification"
+            <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+                android:id="@+id/edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_top_notification"
-                android:text="Edit"
+                android:text="EDIT"
                 android:textColor="#23a1ff"
                 android:textSize="12sp"
-                android:visibility="visible" />
+                android:visibility="visible"
+                tools:visibility="visible" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 </com.google.android.material.appbar.AppBarLayout>
