@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -20,17 +23,26 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private WrapContentHeightViewPager viewPager;
     private float RATIO_SCALE = 1.90f;
     private View root;
+    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 //        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
+        root.findViewById(R.id.toolbar_notification).setOnClickListener(this);
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
     }
 
     @Override
@@ -94,6 +106,13 @@ public class HomeFragment extends Fragment {
         viewPager.setAdapter(new HomePagerAdapter());
         BubblePageIndicator indicator = root.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.toolbar_notification) {
+            navController.navigate(R.id.option_notification);
+        }
     }
 
     class HomePagerAdapter extends PagerAdapter {

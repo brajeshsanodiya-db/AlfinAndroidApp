@@ -2,16 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:padding="12dp">
+    android:layout_marginTop="48dp">
 
     <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
         android:id="@+id/index_text_view"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="19dp"
         android:background="@drawable/about_circle"
         android:gravity="center"
         android:text="1"
@@ -35,7 +34,6 @@
         android:layout_below="@+id/about_us_title_textview"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/index_text_view"
-
         android:text="Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere"
         android:textColor="#6f6f6f"
         android:textSize="12sp" />

@@ -156,7 +156,7 @@
     </LinearLayout>
 
     <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
-        android:id="@+id/btn_next"
+        android:id="@+id/update_profile_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="90dp"

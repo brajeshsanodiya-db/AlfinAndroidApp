@@ -51,9 +51,9 @@ public class AboutAlfinFragment extends Fragment implements View.OnClickListener
 
     private List<AboutAlfinInfo> getAboutAlfinData() {
         List<AboutAlfinInfo> list = new ArrayList<>();
-        list.add(new AboutAlfinInfo("Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere", "Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere"));
-        list.add(new AboutAlfinInfo("Use Alfin Coins to win exciting prizes for FREE every month", "Use Alfin Coins to win exciting prizes for FREE every month"));
-        list.add(new AboutAlfinInfo("Check Your Savings Account Transactions without any Banking Password or ATM PIN. No need to Visit Bank Branches now.", "Check Your Savings Account Transactions without any Banking Password or ATM PIN. No need to Visit Bank Branches now."));
+        list.add(new AboutAlfinInfo("1","Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere", "Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere"));
+        list.add(new AboutAlfinInfo("2","Use Alfin Coins to win exciting prizes for FREE every month", "Use Alfin Coins to win exciting prizes for FREE every month"));
+        list.add(new AboutAlfinInfo("3","Check Your Savings Account Transactions without any Banking Password or ATM PIN. No need to Visit Bank Branches now.", "Check Your Savings Account Transactions without any Banking Password or ATM PIN. No need to Visit Bank Branches now."));
         return list;
     }
 
@@ -85,7 +85,7 @@ public class AboutAlfinFragment extends Fragment implements View.OnClickListener
 
         @Override
         public void onBindViewHolder(@NonNull AboutAlfinViewHolder holder, int position) {
-            holder.indexTextView.setText(holder.getAdapterPosition() + 1);
+            holder.indexTextView.setText(list.get(holder.getAdapterPosition()).getId());
             holder.titleTextView.setText(list.get(holder.getAdapterPosition()).getTitle());
             holder.subTitleTextView.setText(list.get(holder.getAdapterPosition()).getSubTitle());
         }
@@ -98,7 +98,7 @@ public class AboutAlfinFragment extends Fragment implements View.OnClickListener
         private class AboutAlfinViewHolder extends RecyclerView.ViewHolder {
             private TextView titleTextView, subTitleTextView, indexTextView;
 
-            public AboutAlfinViewHolder(@NonNull View itemView) {
+            AboutAlfinViewHolder(@NonNull View itemView) {
                 super(itemView);
                 indexTextView = itemView.findViewById(R.id.index_text_view);
                 titleTextView = itemView.findViewById(R.id.about_us_title_textview);
