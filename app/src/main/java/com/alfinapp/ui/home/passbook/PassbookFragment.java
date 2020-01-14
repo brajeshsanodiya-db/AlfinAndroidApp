@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -18,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class PassbookFragment extends Fragment {
@@ -29,7 +37,39 @@ public class PassbookFragment extends Fragment {
 
 
         setUpPassbookPager(root);
+        TextView alfinCoinTextView = root.findViewById(R.id.alfinCoin);
+        TextView transactionHistoryTextView = root.findViewById(R.id.transactionHistory);
+        alfinCoinTextView.setOnClickListener(view -> {
+            alfinCoinTextView.setBackgroundResource(R.drawable.passbook_tab_select_bg);
+            alfinCoinTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_select_color));
+            transactionHistoryTextView.setBackgroundResource(R.drawable.passbook_tab_normal_bg);
+            transactionHistoryTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_normal_color));
+//            navController.navigate(R.id.alfinCoinFragment);
+            changeFragment(1);
+        });
+
+        transactionHistoryTextView.setOnClickListener(view -> {
+            transactionHistoryTextView.setBackgroundResource(R.drawable.passbook_tab_select_bg);
+            transactionHistoryTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_select_color));
+            alfinCoinTextView.setBackgroundResource(R.drawable.passbook_tab_normal_bg);
+            alfinCoinTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_normal_color));
+//            navController.navigate(R.id.transactionHistoryFragment);
+            changeFragment(2);
+        });
         return root;
+    }
+
+    private void changeFragment(int i) {
+        Fragment fragment;
+        if (i == 1) {
+            fragment = new AlfinCoinFragment();
+        } else {
+            fragment = new TransactionHistoryFragment();
+        }
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.passbook_navigation, fragment, fragment.toString());
+        fragmentTransaction.commit();
     }
 
     private void setUpPassbookPager(View root) {

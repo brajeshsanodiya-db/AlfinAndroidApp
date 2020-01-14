@@ -25,12 +25,13 @@ public class ContestsViewModel extends ViewModel {
         return mText;
     }
 
-    public ContestWinnerAdapter getContestWinnerAdapter() {
-        return new ContestWinnerAdapter();
-    }
 
     public ActiveBidsAdapter getActiveBidsAdapter() {
         return new ActiveBidsAdapter();
+    }
+
+    public ContestWinnerAdapter getContestWinnerAdapter() {
+        return new ContestWinnerAdapter();
     }
 
     class ContestWinnerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

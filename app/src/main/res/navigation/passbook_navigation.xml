@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/passbook_navigation"
-    app:startDestination="@id/alfinCoinFragment">
+    app:startDestination="@id/transactionHistoryFragment">
 
     <fragment
         android:id="@+id/transactionHistoryFragment"
         android:name="com.alfinapp.ui.home.passbook.TransactionHistoryFragment"
         android:label="transaction_history_fragment"
         tools:layout="@layout/transaction_history_fragment" />
+
     <fragment
         android:id="@+id/alfinCoinFragment"
         android:name="com.alfinapp.ui.home.passbook.AlfinCoinFragment"

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +27,16 @@ public class TransactionHistoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.transaction_history_fragment, container, false);
+        View root = inflater.inflate(R.layout.transaction_history_fragment, container, false);
+        mViewModel = ViewModelProviders.of(this).get(TransactionHistoryViewModel.class);
+
+        /*Contest Winner*/
+        RecyclerView contest_winner_rv = root.findViewById(R.id.transactionHistoryRecyclerView);
+        contest_winner_rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        contest_winner_rv.setAdapter(mViewModel.getTransactionHistoryAdapter());
+
+        return root;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(TransactionHistoryViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

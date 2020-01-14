@@ -67,12 +67,10 @@
     <style name="passbook_tab_normal">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/passbook_tab_bg</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">2dp</item>
         <item name="android:paddingEnd">2dp</item>
-        <item name="android:textColor">#c6c6c6</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
     </style>
@@ -80,12 +78,10 @@
     <style name="passbook_tab_select">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/passbook_tab_select_bg</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">2dp</item>
         <item name="android:paddingEnd">2dp</item>
-        <item name="android:textColor">#dca202</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
     </style>
