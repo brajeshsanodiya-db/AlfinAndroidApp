@@ -40,7 +40,7 @@ public class AppIntroActivity extends AppCompatActivity implements View.OnClickL
         viewPager = findViewById(R.id.pager);
         TextView btnNext = findViewById(R.id.btn_next);
         BubblePageIndicator indicator = findViewById(R.id.indicator);
-        btnNext.setOnClickListener(this::onClick);
+        btnNext.setOnClickListener(this);
 
 
 

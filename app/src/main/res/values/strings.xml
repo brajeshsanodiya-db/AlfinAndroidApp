@@ -8,7 +8,7 @@
     <string name="title_passbook">Passbook</string>
     <string name="title_profile">Profile</string>
     <string name="title_notification">Notification</string>
-    <string name="title_privacy_policy">Notification</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>
     <string name="next_str">Next</string>
@@ -22,8 +22,8 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Refferal Code  must be >5 characters</string>
+    <string name="invalid_phonenumber">Not a valid Phone Number</string>
+    <string name="invalid_reffaral">Refferal Code  must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login_message_1">Enter your registered mobile number with your bank account</string>
     <string name="str_login_message_2">We use your registered mobile number with bank to read bank SMS to know your account balance. The balance in your account wins your Alﬁn coins.</string>
@@ -31,8 +31,8 @@
     <string name="str_login_bottom_message_1">We do not have access to your bank account.</string>
     <string name="str_login_bottom_message_2">We do not share the transacation data with your agents, any merchant or third party.</string>
 
-    <string name="onboard_message_1">Get Rewarded with Alfin Coins on Your Savings Account Balance and Save Money anywhere</string>
-    <string name="onboard_message_2">Use Alfin Coins to win exciting prizes for FREE every month.</string>
+    <string name="onboard_message_1">Get \nRewarded \nwith Alfin \nCoins on \nYour Savings \nAccount \nBalance and \nSave Money \nanywhere</string>
+    <string name="onboard_message_2">Use Alfin \nCoins to win \nexciting \nprizes for \nFREE every \nmonth.</string>
     <string name="onboard_message_3">Check Your Savings Account Transactions without any Banking \nPassword or ATM PIN. No need to Visit Bank Branches now.</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="resend_otp">Resend OTP</string>
@@ -76,7 +76,7 @@ Alfin will take all steps reasonably necessary to ensure that your data is treat
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_and_conditions">Terms &amp; Conditions</string>
     <string name="address">Address</string>
-    <string name="earn_alfin_coins_on_your_savings_naccount_balance">Earn Alfin Coins on your Savings  Account balance</string>
+    <string name="earn_alfin_coins_on_your_savings_naccount_balance">Earn Alfin Coins on your Savings  \nAccount balance</string>
     <string name="your_savings_naccount_balance">Your Savings\n  Account Balance</string>
     <string name="your_alfin_coins">Your Alfin Coins</string>
     <string name="rs_50_000">Rs. 50,000</string>
@@ -91,7 +91,6 @@ Alfin will take all steps reasonably necessary to ensure that your data is treat
     <string name="buy_any_policy_and_earn_alfin_coins">Buy any policy and earn Alfin coins</string>
     <string name="contact_agent">Contact Agent</string>
     <string name="call_back">Call Back</string>
-    <string name="title_activity_passbook">PassbookActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -181,6 +180,7 @@ Alfin will take all steps reasonably necessary to ensure that your data is treat
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="action_settings">Settings</string>
-
+    <string name="alfin_coins">Alfin Coins</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="active_bid_detail_desc"><![CDATA[<p align="justify">20L Semi Automatic \nworth<font color=\'#fd7000\'>Rs. 12000</font></p>]]></string>
 </resources>

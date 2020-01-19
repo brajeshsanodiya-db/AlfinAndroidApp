@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText phoneNumberEditText = findViewById(R.id.username);
+        final EditText phoneNumberEditText = findViewById(R.id.phone_number_edittext);
         final EditText refferalEditText = findViewById(R.id.referral_code_ev);
         final LatoHeavyTextView loginButton = findViewById(R.id.login);
         final LatoHeavyTextView submitButton = findViewById(R.id.submit);

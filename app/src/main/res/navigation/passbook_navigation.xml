@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/passbook_navigation"
-    app:startDestination="@id/transactionHistoryFragment">
+    app:startDestination="@id/alfinCoinFragment">
 
     <fragment
         android:id="@+id/transactionHistoryFragment"

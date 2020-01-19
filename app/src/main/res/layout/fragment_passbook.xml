@@ -37,7 +37,7 @@
                     android:id="@+id/alfinCoin"
                     style="@style/passbook_tab_select"
                     android:background="@drawable/passbook_tab_select_bg"
-                    android:text="Alfin Coins"
+                    android:text="@string/alfin_coins"
                     android:textColor="#dca202" />
 
                 <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
@@ -45,22 +45,17 @@
                     style="@style/passbook_tab_normal"
                     android:layout_marginStart="28dp"
                     android:background="@drawable/passbook_tab_normal_bg"
-                    android:text="Transaction History"
+                    android:text="@string/transaction_history"
                     android:textColor="#c6c6c6" />
             </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/passbook_navigation"
+            <fragment
+                android:id="@+id/passbook_nav_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <!-- <fragment
-                 android:id="@+id/passbook_nav_fragment"
-                 android:name="androidx.navigation.fragment.NavHostFragment"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 app:defaultNavHost="true"
-                 app:navGraph="@navigation/passbook_navigation" />-->
-
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/passbook_navigation" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

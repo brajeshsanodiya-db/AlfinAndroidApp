@@ -18,7 +18,6 @@ import com.alfinapp.R;
 import java.util.Objects;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener, EditProfileDialogFragment.Listener {
-    private NavController navController;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -28,10 +27,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, E
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.profile_fragment, container, false);
+
         setToolbar(rootView);
         return rootView;
     }
 
+    private NavController navController;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -60,6 +61,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, E
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.back_button:
+                navController.navigateUp();
+                break;
             case R.id.edit_profile:
                 showBottomSheet();
                 break;

@@ -15,10 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.home.passbook.PassbookActivity"
-            android:label="@string/title_activity_passbook"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
             android:name=".ui.login.LoginPagerActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -37,6 +33,7 @@
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
+            android:hardwareAccelerated="false"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.login.LoginActivity"

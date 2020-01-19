@@ -14,11 +14,14 @@ public class AlfinApplication extends Application {
         AlfinApplication.instance = this;
 
         setApplicationFont();
+
     }
 
-    public static AlfinApplication getInstance() {
-        return AlfinApplication.instance;
-    }
+
+
+//    public static AlfinApplication getInstance() {
+//        return AlfinApplication.instance;
+//    }
 
     public void setApplicationFont() {
         FontsUtils.setDefaultFont(this, "MONOSPACE", "fonts/Lato-Regular.ttf");

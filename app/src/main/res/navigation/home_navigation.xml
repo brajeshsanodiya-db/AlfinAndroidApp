@@ -5,11 +5,34 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/navigation_home">
 
+    <include app:graph="@navigation/passbook_navigation" />
+
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.alfinapp.ui.home.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_option_notification"
+            app:destination="@id/option_notification"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_contests"
+            app:destination="@id/navigation_contests"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_passbook"
+            app:destination="@id/navigation"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/option_notification"
@@ -29,12 +52,31 @@
         android:label="@string/title_passbook"
         tools:layout="@layout/fragment_passbook" />
 
-
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.alfinapp.ui.home.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment">
+        <action
+            android:id="@+id/action_navigation_profile_to_privacy_policy_fragment"
+            app:destination="@id/privacy_policy_fragment"
+            app:popUpTo="@+id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_profile_to_about_fragment"
+            app:destination="@id/about_fragment"
+            app:popUpTo="@+id/navigation_profile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_profile_to_contact_us_fragment"
+            app:destination="@id/contact_us_fragment"
+            app:popUpTo="@+id/navigation_profile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_profile_to_terms_and_cond_fragment"
+            app:destination="@id/terms_and_cond_fragment"
+            app:popUpTo="@+id/navigation_profile"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/contact_us_fragment"
@@ -59,5 +101,18 @@
         android:name="com.alfinapp.ui.termsAndCondition.TermsAndCondiFragment"
         android:label="@string/terms_and_conditions"
         tools:layout="@layout/fragment_terms_and_condition" />
+    <fragment
+        android:id="@+id/alfinCoinFragment2"
+        android:name="com.alfinapp.ui.home.passbook.AlfinCoinFragment"
+        android:label="alfin_coin_fragment"
+        tools:layout="@layout/alfin_coin_fragment" />
+    <fragment
+        android:id="@+id/transactionHistoryFragment2"
+        android:name="com.alfinapp.ui.home.passbook.TransactionHistoryFragment"
+        android:label="transaction_history_fragment"
+        tools:layout="@layout/transaction_history_fragment" />
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/navigation_passbook" />
 
 </navigation>

@@ -1,13 +1,17 @@
 package com.alfinapp.ui.home.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,10 +20,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alfinapp.R;
 import com.alfinapp.ui.views.WrapContentHeightViewPager;
+import com.alfinapp.utils.ToolsUtils;
 import com.shuhart.bubblepagerindicator.BubblePageIndicator;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -29,6 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private float RATIO_SCALE = 1.90f;
     private View root;
     private NavController navController;
+    private int finalPaddingRequired;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,53 +64,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         // Initializing view pager
         viewPager = root.findViewById(R.id.item_pager);
-
+        viewPager.setVisibility(View.VISIBLE);
         viewPager.setClipToPadding(false);
         viewPager.setPageMargin(24);
         viewPager.setPadding(160, 0, 160, 0);
         viewPager.setOffscreenPageLimit(3);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                ViewGroup sampleFragment = ((HomePagerAdapter) Objects.requireNonNull(viewPager.getAdapter())).getRegisteredFragment(position);
-                float scale = 1 - (positionOffset * RATIO_SCALE);
-                sampleFragment.setScaleY(scale);
-                sampleFragment.invalidate();
-                if (position + 1 < viewPager.getAdapter().getCount()) {
-                    sampleFragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(position + 1);
-                    scale = positionOffset * RATIO_SCALE + (1 - RATIO_SCALE);
-                    sampleFragment.setScaleY(scale);
-                    sampleFragment.invalidate();
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_IDLE) {
-                    ViewGroup fragment = ((HomePagerAdapter) Objects.requireNonNull(viewPager.getAdapter())).getRegisteredFragment(viewPager.getCurrentItem());
-                    fragment.setScaleY(1);
-                    fragment.invalidate();
-                    if (viewPager.getCurrentItem() > 0) {
-                        fragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(viewPager.getCurrentItem() - 1);
-                        fragment.setScaleY(1 - RATIO_SCALE);
-                        fragment.invalidate();
-                    }
-
-                    if (viewPager.getCurrentItem() + 1 < viewPager.getAdapter().getCount()) {
-                        fragment = ((HomePagerAdapter) viewPager.getAdapter()).getRegisteredFragment(viewPager.getCurrentItem() + 1);
-                        fragment.setScaleY(1 - RATIO_SCALE);
-                    }
-                }
-
-            }
-        });
-
+        addData();
         viewPager.setAdapter(new HomePagerAdapter());
         BubblePageIndicator indicator = root.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
@@ -115,22 +82,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    List<String> homePagerList = new ArrayList<>();
+
+    private void addData() {
+        homePagerList.clear();
+        homePagerList.add("ABCD");
+        homePagerList.add("ABCD");
+        homePagerList.add("ABCD");
+        homePagerList.add("ABCD");
+        homePagerList.add("ABCD");
+        homePagerList.add("ABCD");
+    }
+
     class HomePagerAdapter extends PagerAdapter {
-        SparseArray<ViewGroup> registeredFragments = new SparseArray<>();
 
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.pageritem_home, container, false);
-            registeredFragments.put(position, layout);
+            TextView bidNowTextView = layout.findViewById(R.id.bid_now_text_view);
+            bidNowTextView.setOnClickListener(view -> createContestBid());
             container.addView(layout);
             return layout;
         }
 
         @Override
         public int getCount() {
-            return 5;
+            return homePagerList.size();
         }
 
         @Override
@@ -140,14 +119,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         @Override
         public void destroyItem(ViewGroup collection, int position, @NotNull Object view) {
-            registeredFragments.remove(position);
 
             collection.removeView((View) view);
         }
 
 
-        ViewGroup getRegisteredFragment(int position) {
-            return registeredFragments.get(position);
-        }
     }
+
+    private void createContestBid() {
+        final AlertDialog.Builder exitDialogBuilder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.dialog_create_contest_bid, null);
+        exitDialogBuilder.setView(dialogView);
+        ImageView closeDialogImageView = dialogView.findViewById(R.id.close_dialog_image_view);
+        TextView bidNowTextView = dialogView.findViewById(R.id.bid_now_text_view);
+
+        final AlertDialog bidNowDialog = exitDialogBuilder.create();
+        Objects.requireNonNull(bidNowDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+        bidNowDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        bidNowDialog.setCancelable(true);
+
+        if (closeDialogImageView != null)
+            closeDialogImageView.setOnClickListener(v -> bidNowDialog.dismiss());
+        if (bidNowTextView != null)
+            bidNowTextView.setOnClickListener(v -> bidNowDialog.dismiss());
+        bidNowDialog.show();
+    }
+
 }

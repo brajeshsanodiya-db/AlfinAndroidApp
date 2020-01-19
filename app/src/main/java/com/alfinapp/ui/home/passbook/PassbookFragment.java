@@ -4,17 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -28,48 +26,36 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class PassbookFragment extends Fragment {
+public class PassbookFragment extends Fragment implements View.OnClickListener {
+
+    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 //        PassbookViewModel passbookViewModel = ViewModelProviders.of(this).get(PassbookViewModel.class);
         View root = inflater.inflate(R.layout.fragment_passbook, container, false);
-
-
+        navController = Navigation.findNavController(root.findViewById(R.id.passbook_nav_fragment));
+        ImageView backButtonImageView = root.findViewById(R.id.back_button);
+        backButtonImageView.setOnClickListener(this);
         setUpPassbookPager(root);
         TextView alfinCoinTextView = root.findViewById(R.id.alfinCoin);
         TextView transactionHistoryTextView = root.findViewById(R.id.transactionHistory);
         alfinCoinTextView.setOnClickListener(view -> {
             alfinCoinTextView.setBackgroundResource(R.drawable.passbook_tab_select_bg);
-            alfinCoinTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_select_color));
+            alfinCoinTextView.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getActivity()), R.color.passbook_select_color));
             transactionHistoryTextView.setBackgroundResource(R.drawable.passbook_tab_normal_bg);
             transactionHistoryTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_normal_color));
-//            navController.navigate(R.id.alfinCoinFragment);
-            changeFragment(1);
+            navController.navigate(R.id.alfinCoinFragment);
         });
 
         transactionHistoryTextView.setOnClickListener(view -> {
             transactionHistoryTextView.setBackgroundResource(R.drawable.passbook_tab_select_bg);
-            transactionHistoryTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_select_color));
+            transactionHistoryTextView.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getActivity()), R.color.passbook_select_color));
             alfinCoinTextView.setBackgroundResource(R.drawable.passbook_tab_normal_bg);
             alfinCoinTextView.setTextColor(ContextCompat.getColor(getActivity(), R.color.passbook_normal_color));
-//            navController.navigate(R.id.transactionHistoryFragment);
-            changeFragment(2);
+            navController.navigate(R.id.transactionHistoryFragment);
         });
         return root;
-    }
-
-    private void changeFragment(int i) {
-        Fragment fragment;
-        if (i == 1) {
-            fragment = new AlfinCoinFragment();
-        } else {
-            fragment = new TransactionHistoryFragment();
-        }
-        FragmentManager fragmentManager = getChildFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.passbook_navigation, fragment, fragment.toString());
-        fragmentTransaction.commit();
     }
 
     private void setUpPassbookPager(View root) {
@@ -82,6 +68,13 @@ public class PassbookFragment extends Fragment {
     }
 
     private List<String> monthList = new ArrayList<>();
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.back_button) {
+            Navigation.findNavController(Objects.requireNonNull(getActivity()), view.getId()).navigateUp();
+        }
+    }
 
     class PassbookPagerAdapter extends PagerAdapter {
 

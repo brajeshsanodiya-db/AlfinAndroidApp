@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.alfinapp.R;
 
@@ -43,6 +44,8 @@ public class TermsAndCondiFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.back_button) {
+            Navigation.findNavController(Objects.requireNonNull(getActivity()), view.getId()).navigateUp();
+        }
     }
 }

@@ -4,6 +4,7 @@ package com.alfinapp.ui.privacyPolicy;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,8 @@ public class PrivacyPolicyFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.back_button) {
+            Navigation.findNavController(Objects.requireNonNull(getActivity()), view.getId()).navigateUp();
+        }
     }
 }

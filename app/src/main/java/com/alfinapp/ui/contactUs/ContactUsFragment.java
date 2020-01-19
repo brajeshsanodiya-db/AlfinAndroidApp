@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,8 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.back_button) {
+            Navigation.findNavController(Objects.requireNonNull(getActivity()), view.getId()).navigateUp();
+        }
     }
 }

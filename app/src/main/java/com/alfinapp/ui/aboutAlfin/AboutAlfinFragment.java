@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,7 +67,9 @@ public class AboutAlfinFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.back_button) {
+            Navigation.findNavController(Objects.requireNonNull(getActivity()), view.getId()).navigateUp();
+        }
     }
 
     private class AboutAlfinAdapter extends RecyclerView.Adapter<AboutAlfinAdapter.AboutAlfinViewHolder> {

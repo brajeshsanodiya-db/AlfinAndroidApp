@@ -48,14 +48,12 @@ public class HomeActivity extends AppCompatActivity {
                 .setFallbackOnNavigateUpListener(() -> false)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
         initBottomNav(bottomNavigationView);
 
         startBusinessLogic();
     }
-
 
     private void initBottomNav(BottomNavigationView bottomNavigationView) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);

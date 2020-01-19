@@ -2,8 +2,6 @@ package com.alfinapp.ui.welcome;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void init() {
+        finish();
         startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
     }
 
