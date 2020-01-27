@@ -1,18 +1,32 @@
 package com.alfinapp.data.network.api;
 
 import com.alfinapp.data.network.model.AppIntro;
+import com.alfinapp.data.network.model.SignUpRequestInfo;
+import com.alfinapp.data.network.model.UserProfileInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-/**
- * Created by anupamchugh on 09/01/17.
- */
 
 public interface APIInterface {
+    @POST("auth/register/")
+    Call<AppIntro> doPostSignUp(@Body SignUpRequestInfo signUpRequestInfo);
 
+    @POST("auth/validate-otp/")
+    Call<AppIntro> doPostValidateOTP(@Body AppIntro user);
+
+    @POST("auth/request-otp/")
+    Call<AppIntro> doPostRequestOTP(@Body AppIntro user);
+
+    @GET("user/profile/")
+    Call<UserProfileInfo> doGetUserProfile();
+
+}
+
+/*
 //    @GET("/api/unknown")
 //    Call<MultipleResource> doGetListResources();
 
@@ -27,6 +41,4 @@ public interface APIInterface {
 //
 //    @FormUrlEncoded
 //    @POST("/api/users?")
-//    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);
-}
-
+//    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);*/

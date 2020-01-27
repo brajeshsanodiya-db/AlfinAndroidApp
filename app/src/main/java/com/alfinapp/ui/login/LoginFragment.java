@@ -49,13 +49,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         loginDataChanged(phoneEditText.getText().toString(), referralEditText.getText().toString());
     }
 
-    public void loginDataChanged(String username, String referral) {
-        if (!isPhoneNumberValid(username)) {
+    public void loginDataChanged(String phoneNumber, String referral) {
+        if (!isPhoneNumberValid(phoneNumber)) {
             Toast.makeText(getContext(), getString(R.string.invalid_phonenumber), Toast.LENGTH_SHORT).show();
         } else if (!isRefferalCodeValid(referral)) {
             Toast.makeText(getContext(), getString(R.string.invalid_reffaral), Toast.LENGTH_SHORT).show();
         } else {
-            loginCallbackListener.onLoginDone();
+            loginCallbackListener.onLoginDone("IND", phoneNumber, referral);
         }
     }
 

@@ -183,4 +183,6 @@ Alfin will take all steps reasonably necessary to ensure that your data is treat
     <string name="alfin_coins">Alfin Coins</string>
     <string name="transaction_history">Transaction History</string>
     <string name="active_bid_detail_desc"><![CDATA[<p align="justify">20L Semi Automatic \nworth<font color=\'#fd7000\'>Rs. 12000</font></p>]]></string>
+    <string name="no_network_error">no network</string>
+    <string name="sorry_error_found_please_try_again_">some thing wrong</string>
 </resources>

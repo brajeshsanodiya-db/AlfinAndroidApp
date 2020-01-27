@@ -1,7 +1,7 @@
 package com.alfinapp.utils.listener;
 
 public interface LoginCallbackListener {
-    void onLoginDone();
+    void onLoginDone(String countryCode, String mobileNumber, String referralCode);
 
-    void onOtpVerify();
+    void onOtpVerify(String application, String mobileNumber, String otp);
 }
