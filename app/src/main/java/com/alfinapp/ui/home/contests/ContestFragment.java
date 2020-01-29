@@ -23,25 +23,22 @@ import java.util.Objects;
 
 public class ContestFragment extends Fragment implements View.OnClickListener {
 
-    private ContestsViewModel dashboardViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(ContestsViewModel.class);
+        ContestsViewModel dashboardViewModel = ViewModelProviders.of(this).get(ContestsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_contest, container, false);
 
         setToolbar(root);
 
         /*Contest Winner*/
-        RecyclerView contest_winner_rv = root.findViewById(R.id.contest_winner_rv);
-        contest_winner_rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        contest_winner_rv.setAdapter(dashboardViewModel.getContestWinnerAdapter());
+        RecyclerView contestWinnerRv = root.findViewById(R.id.contest_winner_rv);
+        contestWinnerRv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        contestWinnerRv.setAdapter(dashboardViewModel.getContestWinnerAdapter());
 
         /*Active Bids*/
-        RecyclerView active_bids_rv = root.findViewById(R.id.active_bids_rv);
-        active_bids_rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        active_bids_rv.setAdapter(dashboardViewModel.getActiveBidsAdapter());
+        RecyclerView activeBidsRv = root.findViewById(R.id.active_bids_rv);
+        activeBidsRv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        activeBidsRv.setAdapter(dashboardViewModel.getActiveBidsAdapter());
 
         return root;
     }
@@ -65,10 +62,8 @@ public class ContestFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.back_button:
-                navController.navigateUp();
-                break;
+        if (view.getId() == R.id.back_button) {
+            navController.navigateUp();
         }
     }
 }

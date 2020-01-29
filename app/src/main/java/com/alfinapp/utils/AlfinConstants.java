@@ -19,4 +19,10 @@ public class AlfinConstants {
         String ENGLISH = "en";
         String HINDI = "hi";
     }
+
+    public interface Authorization {
+        String AUTH_TOKEN = "AuthorizationToken";
+        String REFRESH_TOKEN = "RefreshToken";
+        String TOKEN_EXPIRE_ON = "TokenExpireOn";
+    }
 }

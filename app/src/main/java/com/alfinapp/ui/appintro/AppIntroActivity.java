@@ -19,6 +19,7 @@ import com.alfinapp.ui.languageChoose.LanguageChoseFragment;
 import com.alfinapp.ui.login.LoginPagerActivity;
 import com.alfinapp.ui.views.NonSwipeableViewPager;
 import com.alfinapp.utils.AlfinConstants;
+import com.alfinapp.utils.ToolsUtils;
 import com.shuhart.bubblepagerindicator.BubblePageIndicator;
 
 public class AppIntroActivity extends AppCompatActivity implements View.OnClickListener {
@@ -41,7 +42,6 @@ public class AppIntroActivity extends AppCompatActivity implements View.OnClickL
         TextView btnNext = findViewById(R.id.btn_next);
         BubblePageIndicator indicator = findViewById(R.id.indicator);
         btnNext.setOnClickListener(this);
-
 
 
         /*Page Change Listener*/
@@ -101,18 +101,11 @@ public class AppIntroActivity extends AppCompatActivity implements View.OnClickL
                 if (pagePosition < PAGE_COUNT - 1) {
                     viewPager.setCurrentItem(pagePosition + 1);
                 } else {
-//                    AlfinPreferences.getInstance(AppIntroActivity.this).setBooleanValue(AlfinConstants.AppPrefKeys.APP_INTRO_DONE, true);
                     startActivity(new Intent(AppIntroActivity.this, LoginPagerActivity.class));
                     finish();
                 }
             }
         }
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        startAppIntro();
     }
 
     @Override

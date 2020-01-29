@@ -26,11 +26,11 @@ public class ContestsViewModel extends ViewModel {
     }
 
 
-    public ActiveBidsAdapter getActiveBidsAdapter() {
+    ActiveBidsAdapter getActiveBidsAdapter() {
         return new ActiveBidsAdapter();
     }
 
-    public ContestWinnerAdapter getContestWinnerAdapter() {
+    ContestWinnerAdapter getContestWinnerAdapter() {
         return new ContestWinnerAdapter();
     }
 

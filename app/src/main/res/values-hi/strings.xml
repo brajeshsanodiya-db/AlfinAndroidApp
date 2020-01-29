@@ -170,6 +170,10 @@
     <string name="active_bid_detail_desc">20L Semi Automatic  worth Rs. 12000</string>
     <string name="no_network_error">no network</string>
     <string name="sorry_error_found_please_try_again_">some thing wrong</string>
+    <string name="confirm">Confirm</string>
+    <string name="exit_text">Are you sure want to exit?</string>
+    <string name="cancel">cancel</string>
+    <string name="yes">Yes</string>
 
 
 </resources>

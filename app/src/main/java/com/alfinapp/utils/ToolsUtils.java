@@ -6,8 +6,9 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
-import com.alfinapp.ui.login.LoginPagerActivity;
+import com.alfinapp.data.local.AlfinPreferences;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Locale;
  */
 
 public class ToolsUtils {
-    static ToolsUtils toolsUtils;
+    private static ToolsUtils toolsUtils;
 
     private ToolsUtils() {
         // This tools class is not publicly instantiable
@@ -60,5 +61,13 @@ public class ToolsUtils {
 
     public void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public HashMap<String, String> getApiHeaders(Context context) {
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json charset=utf-8");
+        headers.put("Accept", "application/json");
+        headers.put("Authorization", "Bearer" + AlfinPreferences.getInstance(context).getStringValue(AlfinConstants.Authorization.AUTH_TOKEN, ""));
+        return headers;
     }
 }

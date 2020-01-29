@@ -55,7 +55,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         } else if (!isRefferalCodeValid(referral)) {
             Toast.makeText(getContext(), getString(R.string.invalid_reffaral), Toast.LENGTH_SHORT).show();
         } else {
-            loginCallbackListener.onLoginDone("IND", phoneNumber, referral);
+            loginCallbackListener.onSignup( phoneNumber, referral);
         }
     }
 

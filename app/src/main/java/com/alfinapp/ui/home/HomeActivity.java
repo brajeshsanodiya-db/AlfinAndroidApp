@@ -6,14 +6,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -109,5 +113,31 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Permission denied to read your SMS", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        showExitDialog();
+    }
+
+    private void showExitDialog() {
+        final AlertDialog.Builder exitDialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.app_exit_popup_layout, null);
+        exitDialogBuilder.setView(dialogView);
+        TextView btnYes = dialogView.findViewById(R.id.textyes);
+        TextView btnNo = dialogView.findViewById(R.id.textno);
+        final AlertDialog exitDialog = exitDialogBuilder.create();
+        exitDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        exitDialog.setCancelable(true);
+
+        if (btnYes != null)
+            btnYes.setOnClickListener(v -> {
+                exitDialog.dismiss();
+                finish();
+            });
+        if (btnNo != null)
+            btnNo.setOnClickListener(v -> exitDialog.dismiss());
+        exitDialog.show();
     }
 }

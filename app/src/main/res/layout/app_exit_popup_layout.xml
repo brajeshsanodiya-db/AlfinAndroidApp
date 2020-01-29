@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/app_box_bg"
+    android:padding="8dp"
+    tools:ignore="RtlHardcoded,RtlSymmetry">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/content_desc"
+            app:srcCompat="@drawable/ic_exit_to_app" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoBoldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:text="@string/confirm"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <com.alfinapp.ui.views.fontTextView.LatoRegularTextView
+        android:id="@+id/txt_dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout"
+        android:paddingLeft="12dp"
+        android:paddingTop="8dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="8dp"
+        android:text="@string/exit_text"
+        android:textColor="@color/grey_700"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/ButtonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_dia"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+            android:id="@+id/textno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingTop="8dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="8dp"
+            android:text="@string/cancel"
+            android:textAllCaps="true"
+            android:textColor="@color/grey_700"
+            android:textSize="14sp" />
+
+        <com.alfinapp.ui.views.fontTextView.LatoHeavyTextView
+            android:id="@+id/textyes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:text="@string/yes"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>

@@ -9,4 +9,5 @@
     <color name="black_overlay">#66000000</color>
     <color name="passbook_select_color">#dca202</color>
     <color name="passbook_normal_color">#c6c6c6</color>
+    <color name="grey_700">#616161</color>
 </resources>

@@ -15,6 +15,8 @@ import com.alfinapp.R;
 import com.alfinapp.utils.listener.LoginCallbackListener;
 import com.mukesh.OtpView;
 
+import java.util.Objects;
+
 public class OtpVerifyFragment extends Fragment implements View.OnClickListener {
 
     private LoginCallbackListener loginCallbackListener;
@@ -35,22 +37,27 @@ public class OtpVerifyFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_otp_verify, container, false);
         rootView.findViewById(R.id.submit_layout).setOnClickListener(this);
+        rootView.findViewById(R.id.resend_otp).setOnClickListener(this);
         otpView = rootView.findViewById(R.id.otpView);
         otpView.setOtpCompletionListener(this::checkOtpAndSubmit);
+        otpView.setFocusableInTouchMode(true);
         return rootView;
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.submit_layout) {
-            checkOtpAndSubmit(otpView.getMaskingChar());
-            loginCallbackListener.onOtpVerify();
+            checkOtpAndSubmit(Objects.requireNonNull(otpView.getText()).toString());
+        } else if (view.getId() == R.id.resend_otp) {
+            loginCallbackListener.onResendOtp();
         }
     }
 
     private void checkOtpAndSubmit(String otp) {
         if (TextUtils.isEmpty(otp)) {
             Toast.makeText(getContext(), "OTP is not valid !!", Toast.LENGTH_SHORT).show();
+        } else {
+            loginCallbackListener.onOtpVerify( "iddpKv0eW1ZW76htUK9NWcDyfNlHLaxeLTPbrm0u",otp);
         }
     }
 }

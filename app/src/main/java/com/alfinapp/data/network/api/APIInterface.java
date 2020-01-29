@@ -6,7 +6,6 @@ import com.alfinapp.data.network.model.UserProfileInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
