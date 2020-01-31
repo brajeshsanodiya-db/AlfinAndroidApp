@@ -1,4 +1,4 @@
-package com.alfinapp.data.network.model;
+package com.alfinapp.data.network.model.appintro;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.alfinapp.data.network.model;
+package com.alfinapp.data.network.model.appintro;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

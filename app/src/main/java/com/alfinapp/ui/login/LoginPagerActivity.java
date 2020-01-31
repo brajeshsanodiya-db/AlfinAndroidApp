@@ -14,7 +14,7 @@ import com.alfinapp.data.network.api.APIClient;
 import com.alfinapp.data.network.api.APIInterface;
 import com.alfinapp.data.network.api.ApiConstants;
 import com.alfinapp.data.network.api.VolleyNetworkSingleton;
-import com.alfinapp.data.network.model.ValidateOtpResponse;
+import com.alfinapp.data.network.model.login.ValidateOtpResponse;
 import com.alfinapp.ui.views.NonSwipeableViewPager;
 import com.alfinapp.ui.welcome.WelcomeActivity;
 import com.alfinapp.utils.AlfinConstants;
@@ -24,9 +24,11 @@ import com.alfinapp.utils.listener.LoginCallbackListener;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.Request;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -86,9 +88,9 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
         if (NetworkStatus.getInstance().isConnected(LoginPagerActivity.this)) {
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("country_code", "IND");
-                jsonObject.put("mobile", mobileNumber);
+                jsonObject.put("phone_number", mobileNumber);
                 jsonObject.put("referral_code", "ASD");
+                jsonObject.put("country_code", "91");
             } catch (Exception ignored) {
 
             }
@@ -129,9 +131,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
         if (NetworkStatus.getInstance().isConnected(LoginPagerActivity.this)) {
             JSONObject jsonObject = new JSONObject();
             try {
-//                jsonObject.put("country_code", "IND");
                 jsonObject.put("phone_number", mobileNumber);
-//                jsonObject.put("referral_code", referralCode);
             } catch (Exception ignored) {
 
             }
@@ -171,7 +171,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("application", application);
-                jsonObject.put("mobile", mobileNumber);
+                jsonObject.put("phone_number", mobileNumber);
                 jsonObject.put("otp", "1111");
             } catch (Exception ignored) {
 

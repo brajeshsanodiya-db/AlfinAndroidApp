@@ -1,8 +1,8 @@
 package com.alfinapp.data.network.api;
 
-import com.alfinapp.data.network.model.AppIntro;
-import com.alfinapp.data.network.model.SignUpRequestInfo;
-import com.alfinapp.data.network.model.UserProfileInfo;
+import com.alfinapp.data.network.model.appintro.AppIntro;
+import com.alfinapp.data.network.model.login.SignUpRequestInfo;
+import com.alfinapp.data.network.model.login.UserProfileInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

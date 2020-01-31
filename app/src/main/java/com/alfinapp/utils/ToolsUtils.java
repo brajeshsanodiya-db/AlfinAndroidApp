@@ -3,6 +3,7 @@ package com.alfinapp.utils;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
@@ -65,9 +66,10 @@ public class ToolsUtils {
 
     public HashMap<String, String> getApiHeaders(Context context) {
         HashMap<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json charset=utf-8");
-        headers.put("Accept", "application/json");
-        headers.put("Authorization", "Bearer" + AlfinPreferences.getInstance(context).getStringValue(AlfinConstants.Authorization.AUTH_TOKEN, ""));
+        headers.put("Content-Type", "application/json");
+        String authorization = AlfinPreferences.getInstance(context).getStringValue(AlfinConstants.Authorization.AUTH_TOKEN, "");
+        if (!TextUtils.isEmpty(authorization))
+            headers.put("Authorization", "Bearer " + authorization);
         return headers;
     }
 }
