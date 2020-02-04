@@ -41,11 +41,13 @@ public class SplashActivity extends AppCompatActivity {
 
     private void init() {
         boolean appIntroDone = alfinPreferences.getBooleanValue(AlfinConstants.AppPrefKeys.APP_INTRO_DONE, false);
+        Intent openIntent;
         if (appIntroDone) {
-            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            openIntent = new Intent(SplashActivity.this, HomeActivity.class);
         } else {
-            startActivity(new Intent(SplashActivity.this, AppIntroActivity.class));
+            openIntent = new Intent(SplashActivity.this, AppIntroActivity.class);
         }
+        startActivity(openIntent);
         finish();
     }
 }

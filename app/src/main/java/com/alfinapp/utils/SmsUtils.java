@@ -2,7 +2,6 @@ package com.alfinapp.utils;
 
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -22,13 +21,14 @@ public class SmsUtils {
     }
 
     public List<SmsInfo> fetchAllSms(Activity mActivity) {
-        List<SmsInfo> lstSms = new ArrayList<SmsInfo>();
-        SmsInfo objSms = new SmsInfo();
+        List<SmsInfo> lstSms = new ArrayList<>();
+        SmsInfo objSms;
         Uri message = Uri.parse("content://sms/");
         ContentResolver cr = mActivity.getContentResolver();
 
         Cursor c = cr.query(message, null, null, null, null);
         mActivity.startManagingCursor(c);
+        assert c != null;
         int totalSMS = c.getCount();
 
         if (c.moveToFirst()) {

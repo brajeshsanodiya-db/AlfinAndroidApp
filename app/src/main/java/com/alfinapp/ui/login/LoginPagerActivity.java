@@ -2,6 +2,9 @@ package com.alfinapp.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import com.alfinapp.data.network.api.APIInterface;
 import com.alfinapp.data.network.api.ApiConstants;
 import com.alfinapp.data.network.api.VolleyNetworkSingleton;
 import com.alfinapp.data.network.model.login.ValidateOtpResponse;
+import com.alfinapp.data.network.model.user.UserResponse;
 import com.alfinapp.ui.views.NonSwipeableViewPager;
 import com.alfinapp.ui.welcome.WelcomeActivity;
 import com.alfinapp.utils.AlfinConstants;
@@ -34,11 +38,12 @@ import org.json.JSONObject;
 import java.util.Map;
 
 public class LoginPagerActivity extends AppCompatActivity implements LoginCallbackListener {
-    NonSwipeableViewPager nonSwipeableViewPager;
+    private NonSwipeableViewPager nonSwipeableViewPager;
     private int PAGE_COUNT = 2;
-    APIInterface apiInterface;
+    private APIInterface apiInterface;
     private String mobileNumber;
     private String refferalCode;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,8 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
         setContentView(R.layout.activity_login_pager);
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
-        nonSwipeableViewPager = findViewById(R.id.login_pager);
+        initViews();
+
         /*Set Adapter*/
         nonSwipeableViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             @NonNull
@@ -66,21 +72,40 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
         });
     }
 
+    private void initViews() {
+        nonSwipeableViewPager = findViewById(R.id.login_pager);
+        progressBar = findViewById(R.id.progress_bar);
+    }
+
     @Override
-    public void onSignup(String mobileNumber, String referralCode) {
-        this.mobileNumber = mobileNumber;
-        this.refferalCode = referralCode;
-        callSignUp(mobileNumber, referralCode);
+    public void onSignup(String mobile, String referral) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            mobileNumber = mobile;
+            refferalCode = referral;
+            callSignUp(mobile, referral);
+        }, 1000);
     }
 
     @Override
     public void onResendOtp() {
-        callResendOtp(mobileNumber, refferalCode);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            callResendOtp(mobileNumber, refferalCode);
+        }, 1000);
+
     }
 
     @Override
     public void onOtpVerify(String application, String otp) {
-        callValidateOtp(application, mobileNumber, otp);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            callValidateOtp(application, mobileNumber, otp);
+        }, 1000);
+
 
     }
 
@@ -102,6 +127,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
                         } catch (Exception ignored) {
                         }
                     }, error -> {
+                progressBar.setVisibility(View.GONE);
                 signupResponse(null);
 
                 if (error instanceof NetworkError) {
@@ -123,6 +149,8 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
     }
 
     private void signupResponse(JSONObject response) {
+        progressBar.setVisibility(View.GONE);
+
         // after response
         nonSwipeableViewPager.setCurrentItem(1);
     }
@@ -143,6 +171,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
                         } catch (Exception ignored) {
                         }
                     }, error -> {
+                progressBar.setVisibility(View.GONE);
                 if (error instanceof NetworkError) {
                     ToolsUtils.getToolsUtils().showToast(LoginPagerActivity.this, getResources().getString(R.string.no_network_error));
                 } else {
@@ -162,9 +191,9 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
     }
 
     private void resendResponse(JSONObject response) {
+        progressBar.setVisibility(View.GONE);
         ToolsUtils.getToolsUtils().showToast(LoginPagerActivity.this, "OTP successfully sent to your phone number");
     }
-
 
     private void callValidateOtp(String application, String mobileNumber, String otp) {
         if (NetworkStatus.getInstance().isConnected(LoginPagerActivity.this)) {
@@ -185,7 +214,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
                         }
 
                     }, error -> {
-
+                progressBar.setVisibility(View.GONE);
                 if (error instanceof NetworkError) {
                     ToolsUtils.getToolsUtils().showToast(LoginPagerActivity.this, getResources().getString(R.string.no_network_error));
                 } else {
@@ -206,6 +235,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
     }
 
     private void otpResponse(JSONObject response) {
+        progressBar.setVisibility(View.GONE);
         ValidateOtpResponse validateOtpResponse = new Gson().fromJson(response.toString(), ValidateOtpResponse.class);
         AlfinPreferences.getInstance(this).setStringValue(AlfinConstants.Authorization.AUTH_TOKEN, validateOtpResponse.getAccessToken());
         AlfinPreferences.getInstance(this).setStringValue(AlfinConstants.Authorization.REFRESH_TOKEN, validateOtpResponse.getRefreshToken());
@@ -243,6 +273,7 @@ public class LoginPagerActivity extends AppCompatActivity implements LoginCallba
     }
 
     private void parseUserProfile(JSONObject response) {
+        UserResponse userResponse = new Gson().fromJson(response.toString(), UserResponse.class);
         startActivity(new Intent(LoginPagerActivity.this, WelcomeActivity.class));
         finish();
     }
