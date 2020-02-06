@@ -1,9 +1,9 @@
 package com.alfinapp.data.db.entity;
 
 public class AboutAlfinInfo {
-    String id;
-    String title;
-    String subTitle;
+    private String id;
+    private String title;
+    private String subTitle;
 
     public AboutAlfinInfo(String id, String title, String subTitle) {
         this.id = id;

@@ -14,20 +14,20 @@ import com.alfinapp.data.db.entity.LogClass;
  * Created by Lalit Goswami on 03/12/2019.
  */
 
-@Database(entities = {LogClass.class}, version = 2, exportSchema = false)
-public abstract class LogDatabase extends RoomDatabase {
+@Database(entities = {LogClass.class}, version = 1, exportSchema = false)
+public abstract class AlfinDatabase extends RoomDatabase {
 
-    private static LogDatabase sInstance;
+    private static AlfinDatabase sInstance;
 
     @WorkerThread
     public abstract LogDAO logDao();
 
-    private static LogDatabase initialize(Context context) {
-        sInstance = Room.databaseBuilder(context.getApplicationContext(), LogDatabase.class, "log-database").fallbackToDestructiveMigration().build();
+    private static AlfinDatabase initialize(Context context) {
+        sInstance = Room.databaseBuilder(context.getApplicationContext(), AlfinDatabase.class, "log-database").fallbackToDestructiveMigration().build();
         return sInstance;
     }
 
-    public static LogDatabase getInstance(Context context) {
+    public static AlfinDatabase getInstance(Context context) {
         if (sInstance == null) {
             return initialize(context);
         } else {
@@ -39,7 +39,7 @@ public abstract class LogDatabase extends RoomDatabase {
         sInstance = null;
     }
 
-    public static void addLog(final LogDatabase db, final LogClass log) {
+    public static void addLog(final AlfinDatabase db, final LogClass log) {
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -52,7 +52,7 @@ public abstract class LogDatabase extends RoomDatabase {
     }
 
 
-    public static void dropTable(LogDatabase db) {
+    public static void dropTable(AlfinDatabase db) {
         db.logDao().dropTable();
     }
 }

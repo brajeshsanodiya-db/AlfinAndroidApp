@@ -1,8 +1,8 @@
 package com.alfinapp.data.db.entity;
 
 public class NotificationInfo {
-    String content;
-    String time;
+    private String content;
+    private String time;
 
     public String getContent() {
         return content;

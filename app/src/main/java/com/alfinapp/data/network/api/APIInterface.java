@@ -11,6 +11,7 @@ import retrofit2.http.POST;
 
 
 public interface APIInterface {
+
     @POST("auth/register/")
     Call<AppIntro> doPostSignUp(@Body SignUpRequestInfo signUpRequestInfo);
 

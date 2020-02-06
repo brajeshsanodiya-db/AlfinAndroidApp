@@ -29,9 +29,9 @@ import javax.net.ssl.X509TrustManager;
 
 
 public class VolleyNetworkSingleton {
-    private static final String DEFAULT_CACHE_DIR = "volley";
+    private static final String DEFAULT_CACHE_DIR = "AlfinVolley";
     private static VolleyNetworkSingleton mInstance;
-    Context mContext;
+    private Context mContext;
     HurlStack hurlStack = new HurlStack() {
         @Override
         protected HttpURLConnection createConnection(URL url) throws IOException {
